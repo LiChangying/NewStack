@@ -1,0 +1,20 @@
+//remove and return stack end element
+public static int getAndRemoveLastElement(Stack<Integer> stack) {
+		int result = stack.pop();//result is stack top element
+		if (stack.isEmpty()) {//if stack is empty, it illustrate result is stack end element 
+			return result;
+		}else{
+			int last = getAndRemoveLastElement(stack);//recursion
+			stack.push(result);//repop stack element
+			return last;
+		}
+	}
+	
+	public static void reverse(Stack<Integer> stack) {
+		if (stack.isEmpty()) {
+			return;
+		}
+		int i = getAndRemoveLastElement(stack);
+		reverse(stack);
+		stack.push(i);
+	}
